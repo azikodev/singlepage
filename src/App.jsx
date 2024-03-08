@@ -1,17 +1,21 @@
-// App.js
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "../Home";
-import About from "../About";
+import React from 'react';
+import { DataProvider } from './DataContext.jsx';
+import { About } from './Pages/About.jsx';
+import { Home } from './Pages/Home.jsx';
+import ErrorBoundary from './ErrorBoundary';
+import './i18n'; 
 
-function App() {  
+
+function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/about" component={About} />
-      </Switch>
-    </Router>
+    <DataProvider>
+      <ErrorBoundary>
+        <div className="App">
+          <Home />
+          <About />
+        </div>
+      </ErrorBoundary>
+    </DataProvider>
   );
 }
 
